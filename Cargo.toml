@@ -17,7 +17,6 @@ publish = false
 # Correctness
 pointer_structural_match = "deny"
 # Restriction
-keyword_idents = "deny"
 missing_abi = "deny"
 missing_copy_implementations = "warn"
 missing_debug_implementations = "warn"
@@ -25,7 +24,6 @@ non_ascii_idents = "deny"
 unreachable_pub = "warn"
 unsafe_code = "forbid"
 unsafe_op_in_unsafe_fn = "deny"
-unused = "warn"
 unused_crate_dependencies = "warn"
 unused_lifetimes = "warn"
 unused_must_use = "deny"
