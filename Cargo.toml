@@ -15,7 +15,6 @@ publish = false
 
 [workspace.lints.rust]
 # Correctness
-pointer_structural_match = "deny"
 # Restriction
 missing_abi = "deny"
 missing_copy_implementations = "warn"
@@ -27,7 +26,6 @@ unsafe_op_in_unsafe_fn = "deny"
 unused_crate_dependencies = "warn"
 unused_lifetimes = "warn"
 unused_must_use = "deny"
-unused_tuple_struct_fields = "warn"
 # Suspicious
 meta_variable_misuse = "warn"
 # Style
