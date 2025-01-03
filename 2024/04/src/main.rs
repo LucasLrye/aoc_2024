@@ -215,7 +215,7 @@ fn test_x_max_2() {
         vec!['S', 'M', 'A'],
     ];
     assert!(check_x_mas(&grid, 1, 1)); // Example with a valid X pattern
-    assert_eq!(check_x_mas(&grid, 0, 0), false); // Example with no valid pattern
+    assert!(!check_x_mas(&grid, 0, 0)); // Example with no valid pattern
 }
 
 /*
