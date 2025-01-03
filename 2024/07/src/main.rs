@@ -4,10 +4,12 @@ use std::path::PathBuf;
 fn main() {
     println!("Hello, Day 7!");
     let input = parse(PathBuf::from("./2024/07/src/text.txt"));
-    let good = part_one(&input);
-    let val1 = process1(input);
+    let good_exemple = part_one(&input);
+    let val1 = process1(input.clone());
+    let val2 = part_two(&input);
     println!("val 1 is {}", val1);
-    println!("part1 is {:?}", good);
+    println!("part1 is {:?}", good_exemple);
+    println!("part2 is {:?}", val2);
 }
 
 fn parse(path: PathBuf) -> String {
@@ -89,6 +91,41 @@ fn part_one(input: &str) -> Option<i64> {
         }
     }
     Some(result)
+}
+
+fn part_two(input: &str) -> Option<i64> {
+    let mut equations: Vec<(i64, Vec<i64>)> = vec![];
+    for line in input.lines() {
+        let target: i64 = line.split_once(":").unwrap().0.parse().unwrap();
+        let nums: Vec<i64> = line
+            .split_once(":")
+            .unwrap()
+            .1
+            .split(" ")
+            .filter(|s| !s.is_empty())
+            .map(|n| n.parse().unwrap())
+            .collect();
+        equations.push((target, nums));
+    }
+    let mut result: i64 = 0;
+    for equation in equations {
+        let mut results: Vec<i64> = vec![equation.1[0]];
+
+        for &n in &equation.1[1..] {
+            results = results
+                .iter()
+                .flat_map(|&r| vec![r * n, r + n, concat_nbr(r, n)])
+                .collect();
+        }
+        if results.contains(&equation.0) {
+            result += equation.0;
+        }
+    }
+    Some(result)
+}
+
+fn concat_nbr(a: i64, b: i64) -> i64 {
+    format!("{}{}", a, b).parse().unwrap()
 }
 
 #[cfg(test)]
